@@ -58,4 +58,3 @@ if __name__ == '__main__':
     # prettyPrintLinkedList(node)
     prettyPrintLinkedList(s.mergeTwoLists(l1, l2))
 
-    print(0 or 3)
