@@ -113,40 +113,38 @@ class Solution:
 
 """
 思路3：
-使用堆，构建一个长度为k的堆, 有bug
+使用堆，构建一个长度为k的堆, 存放 k 个列表的首元素。依次抛出堆中的最小元素，并让其列表的下一个元素入堆。
+因为入堆的复杂度为 logk，
+由于python3的heapq中对元组进行比较时，如果第一个元素比较结果相同，则会比较下一个元素，即比较ListNode从而抛出异常。针对这个问题，我们在元组中增加一个 x 来解决，这个x表示当前是第几个列表
 """
 import heapq
 
 class Solution:
     import heapq
 
-    def _op(self, node1, node2):
-        return node1.val > node2.val
-
     def mergeKLists(self, lists):
         """
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        """ """
+        """执行用时: 96 ms, 在Merge k Sorted Lists的Python3提交中击败了90.74% 的用户 """
 
         res = ListNode(-1)
         cur = res
         p = list()
-        heapq.heapify()
 
+        x = 0
         for i in lists:
             if i:
-                heapq.heappush(p, (i.val, i))
-                print(p)
+                heapq.heappush(p, (i.val, x, i))
+                x += 1
 
         while len(p) > 0:
-            cur.next = heapq.heappop(p)[1]
+            cur_x, cur.next = heapq.heappop(p)[1:]
             cur = cur.next
 
             if cur.next:
-                heapq.heappush(p, (cur.next.val, cur.next))
-                print(p)
+                heapq.heappush(p, (cur.next.val, cur_x, cur.next))
 
         return res.next
 
