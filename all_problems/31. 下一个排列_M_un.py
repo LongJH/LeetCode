@@ -8,51 +8,44 @@
 
 """
 题目：
-假设按照升序排序的数组在预先未知的某个点上进行了旋转。
+实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
 
-( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
+如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
 
-搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。
+必须原地修改，只允许使用额外常数空间。
 
-你可以假设数组中不存在重复的元素。
-
-你的算法时间复杂度必须是 O(log n) 级别。
-
-示例 1:
-
-输入: nums = [4,5,6,7,0,1,2], target = 0
-输出: 4
-示例 2:
-
-输入: nums = [4,5,6,7,0,1,2], target = 3
-输出: -1
+以下是一些例子，输入位于左侧列，其相应输出位于右侧列。
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1
 """
 
 """
 思路1：
-内置函数
+
 """
 
 
 class Solution:
-    def search(self, nums, target):
+    def nextPermutation(self, nums):
         """
         :type nums: List[int]
-        :type target: int
-        :rtype: int
+        :rtype: void Do not return anything, modify nums in-place instead.
         """
-        """执行用时: 48 ms, 在Search in Rotated Sorted Array的Python3提交中击败了91.98% 的用户"""
-        try:
-            return nums.index(target)
-        except:
-            return -1
+        if not nums:
+            return []
 
-"""
-思路2：
-使用二分法查找
-"""
+        l = len(nums)
+        for i in range(l):
+            p = l - i - 1
+            q = l - i - 2
+            if nums[p] > nums[q]:
+                nums[p], nums[q] = nums[q], nums[p]
+                return
+
+        nums.sort()
+
 
 if __name__ == '__main__':
     slt = Solution()
     print(slt.nextPermutation([1,2,3]))
-[1,1,1,2,3].index(1)
