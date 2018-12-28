@@ -25,7 +25,7 @@ from structure.list_node import *
 """
 
 """
-解题思路-递归：
+解题思路：
 使用双指针，一个f指向head，一个s指向n个以后，两者同时往后遍历，当s为空时表示f为倒数第n个元素
 """
 
