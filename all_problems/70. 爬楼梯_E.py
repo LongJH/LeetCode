@@ -56,7 +56,7 @@ class Solution:
         :type n: int
         :rtype: int
         """
-        """执行用时: 48 ms, 在Climbing Stairs的Python3提交中击败了46.79% 的用户"""
+        """执行用时: 44 ms, 在Climbing Stairs的Python3提交中击败了77.95% 的用户"""
         if n == 1 or n == 0:
             return 1
 
@@ -87,4 +87,3 @@ class Solution:
 if __name__ == '__main__':
     slt = Solution()
     print(slt.climbStairs(9))
-5 ** 0.5
