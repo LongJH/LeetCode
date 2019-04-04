@@ -50,7 +50,7 @@ class Solution:
 
         if left:                # 剩余左括号
             self.generateDfs(left - 1, right, string + "(", res)
-        if right > left:        # 剩余右括号比做括号多
+        if right > left:        # 剩余右括号比左括号多
             self.generateDfs(left, right - 1, string + ")", res)
 
 
